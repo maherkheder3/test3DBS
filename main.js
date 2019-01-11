@@ -22,10 +22,9 @@ var engine = new BABYLON.Engine(canvas, true);
 engine.setHardwareScalingLevel(0.5);
 
 //Load scene
-BABYLON.SceneLoader.ShowLoadingScreen = true; // was a false
+BABYLON.SceneLoader.ShowLoadingScreen = false;
 BABYLON.SceneLoader.CleanBoneMatrixWeights = true;
 BABYLON.SceneLoader.Load("assets/", "morphs.babylon", engine, function (newScene) {
-
     newScene.executeWhenReady(function () {
         scene = newScene;
         scene.clearColor = new BABYLON.Color4(0,0,0,0);
@@ -75,7 +74,7 @@ BABYLON.SceneLoader.Load("assets/", "morphs.babylon", engine, function (newScene
 
 function setupLighting() {
     light = new BABYLON.DirectionalLight("dir", new BABYLON.Vector3(-0.2, -2, 1.5), scene);
-    light.position = new BABYLON.Vector3(-5, 30, -15);    
+    light.position = new BABYLON.Vector3(-5, 30, -15);
 }
 
 function setupRunway() {
