@@ -145,16 +145,18 @@ function setupMaterials() {
     glass.specularColor = new BABYLON.Color3(0.5,0.5,0.5);
     matEyeLeft.subMaterials[1] = glass;
     matEyeRight.subMaterials[1] = glass;
-  */  
+  */
     //Clothes
     clothes.top1 = scene.getMeshByName("Top1");
     clothes.shorts1 = scene.getMeshByName("Shorts1")
+    //clothes.test1 = scene.getMeshByName("test1")
     clothes.top2 = scene.getMeshByName("Top2");
     clothes.shorts2 = scene.getMeshByName("Shorts2")
 
     var matClothes = {
         top1:clothes.top1.material,
         shorts1:clothes.shorts1.material,
+        // test1:clothes.test1.material,
         top2:clothes.top2.material,
         shorts2:clothes.shorts2.material
     }
@@ -171,14 +173,24 @@ function setupMaterials() {
                 partTexture.uOffset = w/2;
                 partTexture.vOffset = h/2;
                 texClothes[i] = partTexture;
+                //console.log(partTexture);
+                
                 i++;
             }
-        } 
+        }
+
+        
         matClothes.top1.diffuseTexture = texClothes[1];
         matClothes.shorts1.diffuseTexture = texClothes[3];
         matClothes.top2.diffuseTexture = texClothes[0];
         matClothes.shorts2.diffuseTexture = texClothes[2];
     });
+
+    // var textureClothes2 = new BABYLON.Texture("assets/test_clothe.jpg", scene, true, true, 3, function() {
+    //
+    //     var partTexture2 = textureClothes.clone(textureClothes2);
+    //     matClothes.test1.diffuseTexture = partTexture2;
+    // });
 
     //Body
     var matBody = {
@@ -306,6 +318,11 @@ function changeClothes(item) {
         case "shorts2":
             clothes.shorts2.setEnabled(true);
             clothes.shorts1.setEnabled(false);
+            break;
+        case "test1":
+            clothes.shorts2.setEnabled(false);
+            clothes.shorts1.setEnabled(false);
+            clothes.test1.setEnabled(true);
             break;
     }
 }
